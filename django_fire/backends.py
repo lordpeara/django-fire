@@ -28,5 +28,5 @@ class FiredPasswordBackend:
         if is_password_fired(user.password):
             error_msg = _('Your password is fired. please reset your password '
                           'through password reset request.')
-            meesages.add_message(request, messages.ERROR, error_msg)
+            messages.add_message(request, messages.ERROR, error_msg)
             raise FiredPassword(error_msg)
