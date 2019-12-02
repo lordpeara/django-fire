@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
@@ -22,10 +23,10 @@ class FiredPasswordBackend:
             # NOTE If there is no appropriate user from request,
             # We have no data to check if password is fired.
             # non-existence of user instance should be handled by another backend.
-            pass
+            return None
 
         if is_password_fired(user.password):
-            raise FiredPassword(_(
-                'Your password is fired. please reset your password '
-                'through password reset request.'
-            ))
+            error_msg = _('Your password is fired. please reset your password '
+                          'through password reset request.')
+            meesages.add_message(request, messages.ERROR, error_msg)
+            raise FiredPassword(error_msg)

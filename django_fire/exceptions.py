@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 
 
 class FireException(Exception):
@@ -5,6 +6,6 @@ class FireException(Exception):
     """
 
 
-class FiredPassword(FireException):
+class FiredPassword(FireException, PermissionDenied):
     """Password is fired by staff's operation
     """
