@@ -1,4 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
+
+from django_fire.hashers import make_fired_password
+
+UserModel = get_user_model()
 
 
 class Command(BaseCommand):
@@ -24,22 +29,27 @@ class Command(BaseCommand):
             '--users', metavar='user_id', type=int, nargs='+',
             help=('It deletes password for specific users. Use this '
                   'when some user\'s password is leaked. '
-                  'e.g.) their passwords are littered public sites.'),
+                  'e.g. their passwords are littered public sites.'),
         )
 
     def handle(self, *args, **kwargs):
         if kwargs['all']:
             # fire all passwords
-            pass
+            # NOTE `_base_manager` should be used because password should be fired
+            # even if some user instances are filtered out.
+            queryset = UserModel._base_manager.all()
 
         elif kwargs['hashers']:
             # fire passwords for hashers
-            pass
+            # TODO
+            queryset = UserModel._base_manager.none()
 
         elif kwargs['users']:
             # fire passwords for users
-            pass
+            queryset = UserModel._base_manager.filter(pk__in=kwargs['users'])
 
         else:
             self.parser.print_help()
             raise CommandError('Select one of options. all, hashers or users')
+        passwd = make_fired_password()
+        queryset.update(password=passwd)
