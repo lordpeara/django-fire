@@ -64,5 +64,7 @@ class TestBackend(TestCase):
         # Given no user for given username
         User.USERNAME_FIELD = 'custom_username_field'
         username = 'this-user-does-not-exist'
+
         # should be None
-        self.assertIsNone(self.backend.authenticate(self.request, **{'custom_username_username':username}))
+        credentials = {'custom_username_field': username}
+        self.assertIsNone(self.backend.authenticate(self.request, **credentials))
