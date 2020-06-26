@@ -1,11 +1,11 @@
 django-fire
 ===========
 
-.. image:: https://codecov.io/gh/lordpeara/django-rest-framework-auth/branch/stable/graph/badge.svg
-    :target: https://codecov.io/gh/lordpeara/django-rest-framework-auth
+.. image:: https://codecov.io/gh/lordpeara/django-fire/branch/stable/graph/badge.svg
+    :target: https://codecov.io/gh/lordpeara/django-fire
 
-.. image:: https://readthedocs.org/projects/django-rest-framework-auth/badge/?version=stable
-    :target: https://django-rest-framework-auth.readthedocs.io/en/stable/?badge=stable
+.. image:: https://readthedocs.org/projects/django-fire/badge/?version=stable
+    :target: https://django-fire.readthedocs.io/en/stable/?badge=stable
 
 
 django-fire is a toolbox for invalidating users password
