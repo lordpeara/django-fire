@@ -1,7 +1,7 @@
 django-fire
 ===========
 
-.. image:: https://codecov.io/gh/lordpeara/django-fire/branch/stable/graph/badge.svg
+.. image:: https://codecov.io/gh/lordpeara/django-fire/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/lordpeara/django-fire
 
 .. image:: https://readthedocs.org/projects/django-fire/badge/?version=stable
